@@ -49,6 +49,7 @@
         const nameRef = ref(db, '1-nZlu_i2Zjia7QoE1UT-KYm-DhXt0IO7wI6FLgQEl24/Sheet1/');
 
         var selectedValue = "DEFAULT";
+        var optionCost = "DEFAULT";
 
         onValue(nameRef, (snapshot) => {
             populateDropdown(snapshot);
@@ -63,7 +64,7 @@
             snapshot.forEach((childSnapshot) => {
                 const childData1 = childSnapshot.val()["Part Number"];
                 const childData2 = childSnapshot.val().Description;
-                const childDataPrice = childSnapshot.val().Cost;
+                const childPrice = childSnapshot.val().Cost;
 
                 const option = document.createElement("span");
                 option.innerHTML = childData1 + " ("  + childData2 + ")";
@@ -71,6 +72,7 @@
                 option.onclick =  function() {
                     document.getElementById("button-text").innerText = this.innerText;
                     selectedValue = this.innerText;
+                    optionCost = childPrice;
                     document.getElementById("dropdown").classList.remove("show");
 
                     // Display the Price text
@@ -110,7 +112,7 @@
                     //you should valid attribute to data for JotForm
                     //to be able to use youw widget as required
                     valid: true,
-                    value: selectedValue
+                    value: selectedValue + " [" + optionCost + "]"
                 }
                 console.log("This is Message value" + msg.value);
                 // send value to JotForm
