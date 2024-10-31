@@ -95,7 +95,7 @@
             var dropdown = document.getElementById('dropdown');
 
             dropdownBtn.addEventListener('click', function() {
-                console.log("Clicked 1.0")
+                console.log("Clicked 1.0");
                 if (dropdown.classList.contains("show")) {
                     JFCustomWidget.requestFrameResize({ height: 400 });
                 } else {
@@ -104,6 +104,7 @@
             });
 
             document.getElementById("dropdown-options").addEventListener("click", function() {
+                console.log("Clicked 1.0");
                 JFCustomWidget.requestFrameResize({height: 150});
             })
 
@@ -115,10 +116,11 @@
 
             JFCustomWidget.sendData(submissionData);
             //subscribe to form submit event
-            console.log("This is data value");
-            console.log(data);
             JFCustomWidget.subscribe("submit", function () {
                 // send value to JotForm
+                console.log("This is data value");
+                console.log(data);
+                
                 JFCustomWidget.sendSubmit(submissionData);
             });
 
