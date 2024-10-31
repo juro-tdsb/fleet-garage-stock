@@ -106,18 +106,22 @@
                 JFCustomWidget.requestFrameResize({height: 150});
             })
 
+
+            var submissionData = {
+                valid: false,
+                value: ""
+            }
+
+            JFCustomWidget.sendData(submissionData);
+
             //subscribe to form submit event
             JFCustomWidget.subscribe("submit", function () {
-                var msg = {
-                    //you should valid attribute to data for JotForm
-                    //to be able to use youw widget as required
-                    valid: true,
-                    value: selectedValue + " [" + optionCost + "]"
-                }
                 console.log("This is Message value" + msg.value);
                 // send value to JotForm
-                JFCustomWidget.sendSubmit(msg);
+                JFCustomWidget.sendSubmit(submissionData);
             });
+
+            
         });
 
     </script>
