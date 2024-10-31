@@ -113,10 +113,10 @@
             }
 
             JFCustomWidget.sendData(submissionData);
-
             //subscribe to form submit event
+            console.log("This is data value");
+            console.log(data);
             JFCustomWidget.subscribe("submit", function () {
-                console.log("This is Message value" + msg.value);
                 // send value to JotForm
                 JFCustomWidget.sendSubmit(submissionData);
             });
